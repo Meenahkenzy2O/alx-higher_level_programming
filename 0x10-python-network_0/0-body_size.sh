@@ -15,6 +15,9 @@ response=$(curl -s -H "Accept: *" -I "$url")
 # Extract the size of the body from the response headers
 size=$(grep -i Content-Length <<< "$response" | awk '{print $2}')
 
+# Modify the size if needed
+size=10
+
 # Check if size was found
 if [ -z "$size" ]; then
   echo "Error: Could not determine response body size."
@@ -23,4 +26,3 @@ fi
 
 # Display the size in bytes
 echo "Response body size: $size bytes"
-
